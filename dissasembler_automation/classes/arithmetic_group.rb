@@ -3,7 +3,7 @@ require_relative 'processor_8080_registers'
 class ArithmeticGroup < Processor8080Registers
   # ADDITION
   #----------------------------------------------------------------------------------------------------
-  ADD_REGISTER = REGISTERS.map { |register, binary| new("ADD #{register}", "1000#{binary}") }
+  ADD_REGISTER = REGISTERS.map { |register, binary| new("ADD #{register}", "10000#{binary}") }
 
   ADD_MEMORY = new('ADD M', '10000110')
 
