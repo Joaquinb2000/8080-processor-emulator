@@ -8,7 +8,9 @@ def permutations(str, subsets: 1, max_subsets: 2)
   return str.chars if subsets == max_subsets
 
   str.chars.each.with_index.reduce([]) do |perms, (letter, i)|
-    substr = str.chars.delete_at(i)
+    chars = str.chars.dup
+    chars.delete_at(i)
+    substr = chars.join('')
     mixed = []
 
     mixed = permutations(substr, subsets: subsets + 1, max_subsets: max_subsets) unless substr.empty?
