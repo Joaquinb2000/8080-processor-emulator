@@ -49,7 +49,7 @@ class ArithmeticGroup < Processor8080Registers
 
   DECR_REGISTER_PAIR = REGISTER_PAIRS.map { |register_pair, binary| new("DCX #{register_pair}", "00#{binary}1011") }
 
-  ADD_REG_PAIR_TO_H_AND_L = REGISTER_PAIRS.slice('H-L').map do |register_pair, binary|
+  ADD_REG_PAIR_TO_H_AND_L = REGISTER_PAIRS.map do |register_pair, binary|
     new("DAD #{register_pair}", "00#{binary}1001")
   end
 
