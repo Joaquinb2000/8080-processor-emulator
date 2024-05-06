@@ -1,5 +1,5 @@
 def bin_to_hex(binary)
-  format('0x%02x', binary.to_i(2))
+  format('%02x', binary.to_i(2))
 end
 
 # Ruby already has a nicer 'permutation' method for strings
