@@ -1,7 +1,7 @@
 require_relative 'processor_8080_registers'
 
 class StackIoAndMachineControlGroup < Processor8080Registers
-  RELEVANT_REGISTER_PAIRS = REGISTER_PAIRS.slice(REGISTER_PAIRS.keys - ['SP'])
+  RELEVANT_REGISTER_PAIRS = REGISTER_PAIRS.slice(*REGISTER_PAIRS.keys - ['SP'])
 
   PUSH = RELEVANT_REGISTER_PAIRS.map { |register_pair, binary| new("PUSH #{register_pair}", "11#{binary}0101") }
 
