@@ -7,7 +7,7 @@ class LogicalGroup < Processor8080Registers
 
   AND_MEMORY = new('ANA M', '10100110')
 
-  AND_IMMEDIATE = new('ANI D#$%02x', '111001110', printf_args: 'code[1]', opbytes: 2)
+  AND_IMMEDIATE = new('ANI D#$%02x', '11100110', printf_args: 'code[1]', opbytes: 2)
 
   # Exclusive OR
   #-------------------------------------------------------------------------------------------------------------------
