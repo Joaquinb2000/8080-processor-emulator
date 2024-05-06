@@ -27,6 +27,17 @@ class Processor8080Registers
     'SP' => '11'
   }.freeze
 
+  CONDITIONS = {
+    'NZ' => '000',  # not zero (Z = 0)
+    'Z' => '001',   # zero (Z = 1)
+    'NC' => '010',  # no carry (CY = 0)
+    'C' => '011',   # carry (CY = 1)
+    'PO' => '100',  # parity odd (P = 0)
+    'PE' => '101',  # parity even (P = 1)
+    'P' => '110',   # plus (S = 0)
+    'M' => '111'    # minus (S = 1)
+}.freeze
+
   # Contains ['AA', 'BB', 'CC', ...] Register combinations
   SELF_DESTINY_SOURCE_REGS_NAMES = REGISTERS.keys.join('').split('').map { |letter| letter * 2 }.freeze
 
