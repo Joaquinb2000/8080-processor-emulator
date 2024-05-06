@@ -27,7 +27,7 @@ class DataTransferGroup < Processor8080Registers
   def self.immediate_move
     REGISTERS.merge(MVI_M_REGISTER).map do |register, binary|
       new(
-        "MVI #{register} #$%02x$02x",
+        "MVI #{register} #$%02x%02x",
         "00#{binary}110",
         printf_args: 'code[2], code[1]',
         opbytes: 2
@@ -39,7 +39,7 @@ class DataTransferGroup < Processor8080Registers
   def self.lxi_rp
     REGISTER_PAIRS.map do |rp, binary|
       new(
-        "LXI #{rp}, #$%02x$02x",
+        "LXI #{rp}, #$%02x%02x",
         "00#{binary}0001",
         printf_args: 'code[2], code[1]',
         opbytes: 3
