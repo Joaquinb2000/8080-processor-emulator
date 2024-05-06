@@ -1,11 +1,13 @@
 require_relative 'processor_8080_registers'
 
 class StackIoAndMachineControlGroup < Processor8080Registers
-  PUSH = REGISTER_PAIRS.map { |register_pair, binary| new("PUSH #{register_pair}", "11#{binary}0101") }
+  RELEVANT_REGISTER_PAIRS = REGISTER_PAIRS.slice(REGISTER_PAIRS.keys - ['SP'])
+
+  PUSH = RELEVANT_REGISTER_PAIRS.map { |register_pair, binary| new("PUSH #{register_pair}", "11#{binary}0101") }
 
   PUSH_PROCESSOR_STATUS_WORD = new('PUSH PSW', '11110101')
 
-  POP = REGISTER_PAIRS.map { |register_pair, binary| new("POP #{register_pair}", "11#{binary}0001") }
+  POP = RELEVANT_REGISTER_PAIRS.map { |register_pair, binary| new("POP #{register_pair}", "11#{binary}0001") }
 
   POP_PROCESSOR_STATUS_WORD = new('POP PSW', '11110001')
 
