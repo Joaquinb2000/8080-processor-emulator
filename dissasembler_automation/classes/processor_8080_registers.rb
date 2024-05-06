@@ -39,10 +39,12 @@ class Processor8080Registers
 }.freeze
 
   # Contains ['AA', 'BB', 'CC', ...] Register combinations
-  SELF_DESTINY_SOURCE_REGS_NAMES = REGISTERS.keys.join('').split('').map { |letter| letter * 2 }.freeze
+  SELF_DESTINY_SOURCE_REGS_NAMES = REGISTERS.keys.map { |letter| letter * 2 }.freeze
+
+  DESTINIY_SOURCE_PERMUTATIONS = permutations(REGISTERS.keys.join(''))
 
   # Contains ['AB', 'AC', ..., 'BC', 'BD', ...] Register combinations
-  DESTINY_SOURCE_REG_NAMES = (permutations(REGISTERS.keys.join('')) + SELF_DESTINY_SOURCE_REGS_NAMES).freeze
+  DESTINY_SOURCE_REG_NAMES = (DESTINIY_SOURCE_PERMUTATIONS + SELF_DESTINY_SOURCE_REGS_NAMES).freeze
 
   # Contains array containing two element arrays with the format: [['A, B', "#{binary_value_combination}"], ...]
   DESTINY_SOURCE_REGS = DESTINY_SOURCE_REG_NAMES.map do |register_pair|
@@ -61,6 +63,6 @@ class Processor8080Registers
 
     case_clause = "case 0x#{hex}"
 
-    " #{case_clause}: #{commands.join('; ')}"
+    "#{case_clause}: #{commands.join('; ')}"
   end
 end
