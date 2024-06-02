@@ -2,11 +2,11 @@ require_relative 'processor_8080_registers'
 require_relative '../utils'
 
 class BranchGroup < Processor8080Registers
-  JUMP = new('JMP addr', '11000011', opbytes: 3)
+  JUMP = new('JMP  $%02x%02x', '11000011', opbytes: 3, printf_args: 'code[2], code[1]')
 
   CONDITIONAL_JUMP = CONDITIONS.map { |condition, binary| new("JC #{condition}", "11#{binary}010", opbytes: 3) }
 
-  CALL = new('CALL addr', '11001101', opbytes: 3)
+  CALL = new('CALL  $%02x%02x', '11001101', opbytes: 3, printf_args: 'code[2], code[1]')
 
   CONDITION_CALL = CONDITIONS.map { |condition, binary| new("CC #{condition}", "11#{binary}100", opbytes: 3) }
 

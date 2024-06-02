@@ -63,13 +63,13 @@ class DataTransferGroup < Processor8080Registers
     end
   end
 
-  LOAD_ACUMULATOR_DIRECT = new('LDA addr', '00111010', opbytes: 3)
+  LOAD_ACUMULATOR_DIRECT = new('LDA  $%02x%02x', '00111010', opbytes: 3, printf_args: 'code[2], code[1]')
 
-  STORE_ACCUMULATOR_DIRECT = new('STA addrs', '00110010', opbytes: 3)
+  STORE_ACCUMULATOR_DIRECT = new('STA  $%02x%02x', '00110010', opbytes: 3, printf_args: 'code[2], code[1]')
 
-  LOAD_H_AND_L_DIRECT = new('LHDL addr', '00101010', opbytes: 3)
+  LOAD_H_AND_L_DIRECT = new('LHDL  $%02x%02x', '00101010', opbytes: 3, printf_args: 'code[2], code[1]')
 
-  STORE_H_AND_L_DIRECT = new('SHLD addr', '00100010', opbytes: 3)
+  STORE_H_AND_L_DIRECT = new('SHLD  $%02x%02x', '00100010', opbytes: 3, printf_args: 'code[2], code[1]')
 
   EXCHANGE_H_AND_L_WITH_D_AND_E = new('XCHG', '11101011')
 
